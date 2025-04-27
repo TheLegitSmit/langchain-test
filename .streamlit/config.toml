@@ -1,0 +1,8 @@
+[theme]
+primaryColor = "#FF4A4A"
+backgroundColor = "#0F0F15"
+secondaryBackgroundColor = "#1B1B26"
+textColor = "#F8F8F8"
+font = "Inter"
+
+layout = "wide"         # optional: full-width layout

@@ -1,0 +1,4 @@
+LangChain is a framework for developing applications powered by language models.
+The answer is 39
+The dog's name is Croissant
+Banshee is the best warframe
