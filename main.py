@@ -141,14 +141,26 @@ internet_agent = initialize_agent(
 
 # ── 9 · Site-Specific Search + Memory setup ─────────────
 SITE = "https://howyoutravel.com/"  # ← replace with your site
+
+def site_specific_search(query: str) -> str:
+    try:
+        results = search.run(f"site:{SITE} {query}")
+        if not results or "No good search results found" in results:
+            return "No information found."
+        return results
+    except Exception:
+        return "No information found."
+
 site_search_tool = Tool(
     name="SiteSearch",
-    func=lambda q: search.run(f"site:{SITE} {q}"),
+    func=site_specific_search,
     description=f"Search only the {SITE} website."
 )
+
 memory_site = ConversationBufferMemory(
     memory_key="chat_history", return_messages=True
 )
+
 site_agent = initialize_agent(
     tools=[site_search_tool],
     llm=llm,
