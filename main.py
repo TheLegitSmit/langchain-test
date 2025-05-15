@@ -25,7 +25,7 @@ from langchain.memory import ConversationBufferMemory
 from langchain.agents import initialize_agent, Tool, AgentType
 from langchain_community.utilities import SerpAPIWrapper  # for internet search :contentReference[oaicite:1]{index=1}
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = st.secrets.get("OPENAI_API_KEY", os.getenv("OPENAI_API_KEY"))
 
 # ── 2 · Streamlit page config ────────────────────────────
 st.set_page_config(page_title="LangChain POC", page_icon="🤖")
@@ -122,7 +122,7 @@ agent = initialize_agent(
 )
 
 # ── 8 · Internet Search + Memory setup ──────────────────
-search = SerpAPIWrapper(serpapi_api_key=os.getenv("SERPAPI_API_KEY"))
+search = SERPAPI_API_KEY = st.secrets.get("SERPAPI_API_KEY", os.getenv("SERPAPI_API_KEY"))
 search_tool = Tool(
     name="Search",
     func=search.run,
